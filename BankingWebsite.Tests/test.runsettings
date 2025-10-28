@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json.schemastore.org/runsettings.json",
+  "RunSettings": {
+    "RunConfiguration": {
+      "MaxCpuCount": 1,
+      "TargetPlatform": "x64",
+      "TargetFrameworkVersion": "net9.0",
+      "TestAdaptersPaths": "./BankingWebsite.Tests/bin/Debug/net9.0",
+      "ResultsDirectory": "./TestResults",
+      "CollectSourceInformation": false
+    },
+    "TestRunParameters": {
+      "Parameter": [
+        {
+          "name": "BROWSER",
+          "value": "chromium"
+        },
+        {
+          "name": "HEADLESS", 
+          "value": "true"
+        },
+        {
+          "name": "TIMEOUT",
+          "value": "30000"
+        },
+        {
+          "name": "BASE_URL",
+          "value": "https://www.bnz.co.nz/"
+        }
+      ]
+    },
+    "DataCollectionRunSettings": {
+      "DataCollectors": [
+        {
+          "friendlyName": "Code Coverage",
+          "enabled": "false"
+        },
+        {
+          "friendlyName": "Video Recorder",
+          "enabled": "true"
+        },
+        {
+          "friendlyName": "Screenshot",
+          "enabled": "true"
+        }
+      ]
+    },
+    "MSTest": {
+      "Parallelize": {
+        "Workers": 1,
+        "Scope": "MethodLevel"
+      }
+    },
+    "NUnit": {
+      "NumberOfTestWorkers": 1,
+      "StopOnError": false,
+      "DefaultTimeout": 30000,
+      "WorkDirectory": "./TestResults"
+    }
+  }
+}
