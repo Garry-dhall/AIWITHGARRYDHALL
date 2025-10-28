@@ -1,0 +1,48 @@
+{
+  "dotnet-test-explorer.testProjectPath": "**/*Tests.csproj",
+  "dotnet-test-explorer.useTreeView": true,
+  "dotnet-test-explorer.showCodeLens": true,
+  "dotnet-test-explorer.codeLens": true,
+  "dotnet-test-explorer.pathForResultFile": "./TestResults",
+  "dotnet-test-explorer.autoWatch": false,
+  "dotnet-test-explorer.autoExpandTree": true,
+  "dotnet-test-explorer.addProblems": true,
+  "dotnet-test-explorer.enableTelemetry": false,
+  "dotnet-test-explorer.runInParallel": false,
+  "dotnet-test-explorer.build": true,
+  "dotnet-test-explorer.restore": true,
+  "dotnet-test-explorer.enableLogging": true,
+  "dotnet-test-explorer.logLevel": "info",
+  
+  "playwright.testMatch": "**/*.feature",
+  "playwright.testDir": "./BankingWebsite.Tests/Features",
+  "playwright.showTrace": true,
+  "playwright.showReport": true,
+  
+  "files.associations": {
+    "*.feature": "gherkin"
+  },
+  
+  "testExplorer.onStart": "reset",
+  "testExplorer.onReload": "reset",
+  "testExplorer.codeLens": true,
+  "testExplorer.gutterDecoration": true,
+  "testExplorer.errorDecoration": true,
+  "testExplorer.errorDecorationHover": true,
+  
+  "csharp.unitTestDebuggingOptions": {
+    "enableConsoleLogging": true,
+    "enableCodeCoverage": false
+  },
+  
+  "omnisharp.enableMsBuildLoadProjectsOnDemand": false,
+  "omnisharp.enableRoslynAnalyzers": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.enableImportCompletion": true,
+  
+  "gherkin-autocomplete.featuresPath": "./BankingWebsite.Tests/Features",
+  "gherkin-autocomplete.stepDefinitionsPath": "./BankingWebsite.Tests/Steps",
+  "gherkin-autocomplete.format": "csharp",
+  
+  "test.defaultGutterClickAction": "run"
+}
