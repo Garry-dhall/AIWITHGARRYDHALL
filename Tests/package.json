@@ -1,0 +1,42 @@
+{
+  "name": "bnz-banking-tests",
+  "version": "1.0.0",
+  "description": "Automated tests for BNZ Banking website login navigation",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui",
+    "cucumber": "npx cucumber-js",
+    "cucumber:report": "npx cucumber-js --format html:Tests/Reports/cucumber-report.html",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:critical": "npx playwright test --grep @critical",
+    "test:login": "npx playwright test LoginNavigationTests.spec.ts",
+    "test:parallel": "npx playwright test --workers=3",
+    "install:browsers": "npx playwright install",
+    "clean:reports": "rm -rf Tests/Reports/*",
+    "setup": "npm install && npx playwright install"
+  },
+  "keywords": [
+    "playwright",
+    "cucumber", 
+    "testing",
+    "automation",
+    "banking",
+    "bnz",
+    "e2e"
+  ],
+  "author": "Test Automation Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@cucumber/cucumber": "^10.0.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
