@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.dotnet-interactive-vscode",
+    "ms-playwright.playwright",
+    "formulahendry.dotnet-test-explorer",
+    "hbenl.vscode-test-explorer",
+    "alexkrechik.cucumberautocomplete",
+    "stevejpurves.cucumber",
+    "ms-vscode.test-adapter-converter",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-xml",
+    "ms-dotnettools.vscode-dotnet-runtime",
+    "ms-dotnettools.blazorwasm-companion",
+    "ionide.ionide-fsharp",
+    "ms-vscode.powershell"
+  ]
+}
