@@ -1,0 +1,75 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run All Tests",
+      "type": "dotnet-test",
+      "request": "launch",
+      "projects": [
+        "**/BankingWebsite.Tests.csproj",
+        "**/Tests/**/*.csproj"
+      ],
+      "arguments": [],
+      "env": {
+        "BROWSER": "chromium",
+        "HEADLESS": "true"
+      }
+    },
+    {
+      "name": "Run BNZ Playwright Tests",
+      "type": "dotnet-test", 
+      "request": "launch",
+      "projects": ["**/BankingWebsite.Tests.csproj"],
+      "arguments": ["--filter", "Category=BNZ"],
+      "env": {
+        "BROWSER": "chromium",
+        "HEADLESS": "false"
+      }
+    },
+    {
+      "name": "Run Smoke Tests",
+      "type": "dotnet-test",
+      "request": "launch", 
+      "projects": ["**/BankingWebsite.Tests.csproj"],
+      "arguments": ["--filter", "Category=Smoke"],
+      "env": {
+        "BROWSER": "chromium",
+        "HEADLESS": "true"
+      }
+    },
+    {
+      "name": "Run Navigation Tests",
+      "type": "dotnet-test",
+      "request": "launch",
+      "projects": ["**/BankingWebsite.Tests.csproj"],
+      "arguments": ["--filter", "Category=Navigation"],
+      "env": {
+        "BROWSER": "chromium", 
+        "HEADLESS": "true"
+      }
+    },
+    {
+      "name": "Run Tests with Firefox",
+      "type": "dotnet-test",
+      "request": "launch",
+      "projects": ["**/BankingWebsite.Tests.csproj"],
+      "arguments": [],
+      "env": {
+        "BROWSER": "firefox",
+        "HEADLESS": "true"
+      }
+    },
+    {
+      "name": "Debug Tests (Headed Mode)",
+      "type": "dotnet-test",
+      "request": "launch",
+      "projects": ["**/BankingWebsite.Tests.csproj"],
+      "arguments": [],
+      "env": {
+        "BROWSER": "chromium",
+        "HEADLESS": "false",
+        "TIMEOUT": "60000"
+      }
+    }
+  ]
+}
