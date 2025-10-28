@@ -1,0 +1,200 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build All Tests",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Restore Test Dependencies",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["restore", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Install Playwright Browsers",
+      "type": "shell",
+      "command": "pwsh",
+      "args": ["./BankingWebsite.Tests/bin/Debug/net9.0/playwright.ps1", "install"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests"
+    },
+    {
+      "label": "Run All BNZ Tests",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--logger", "trx", "--results-directory", "./TestResults"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "chromium",
+          "HEADLESS": "true"
+        }
+      }
+    },
+    {
+      "label": "Run Smoke Tests",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--filter", "Category=Smoke", "--logger", "trx"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "chromium",
+          "HEADLESS": "true"
+        }
+      }
+    },
+    {
+      "label": "Run Navigation Tests",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--filter", "Category=Navigation", "--logger", "trx"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "chromium",
+          "HEADLESS": "true"
+        }
+      }
+    },
+    {
+      "label": "Debug Tests (Headed Mode)",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--logger", "console;verbosity=detailed"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "chromium",
+          "HEADLESS": "false",
+          "TIMEOUT": "60000"
+        }
+      }
+    },
+    {
+      "label": "Run Tests with Firefox",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--logger", "trx"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "firefox",
+          "HEADLESS": "true"
+        }
+      }
+    },
+    {
+      "label": "Run Tests with WebKit",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--logger", "trx"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "webkit",
+          "HEADLESS": "true"
+        }
+      }
+    },
+    {
+      "label": "Clean Test Results",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-c", "Remove-Item -Recurse -Force ./TestResults, ./BankingWebsite.Tests/bin, ./BankingWebsite.Tests/obj -ErrorAction SilentlyContinue"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Generate Test Report",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test", "./BankingWebsite.Tests/BankingWebsite.Tests.csproj", "--logger", "html", "--logger", "trx", "--results-directory", "./TestResults"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Build All Tests",
+      "options": {
+        "env": {
+          "BROWSER": "chromium",
+          "HEADLESS": "true"
+        }
+      }
+    }
+  ]
+}
